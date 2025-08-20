@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import { auth } from '@/api/auth'
 import { me } from '@/api/me'
@@ -13,14 +13,12 @@ export default function App() {
   const [output, setOutput] = useState('')
 
   useEffect(() => {
-    // 토큰 변경 구독 (in-memory)
     const unsub = tokenStore.subscribe(setToken)
     setToken(tokenStore.get())
     return unsub
   }, [])
 
-  async function onSubmit(e) {
-    e.preventDefault()
+  const onSubmit = useCallback(async () => {
     setOutput('요청 중…')
     try {
       if (mode === 'register') {
@@ -34,9 +32,9 @@ export default function App() {
     } catch (err) {
       setOutput(`❌ ${err.message} (${err.status || '-'})`)
     }
-  }
+  }, [mode, email, password, name])
 
-  async function fetchMe() {
+  const fetchMe = useCallback(async () => {
     setOutput('요청 중…')
     try {
       const res = await me.get()
