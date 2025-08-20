@@ -17,5 +17,8 @@ userSchema.methods.setPassword = async function (plain) {
 userSchema.methods.verifyPassword = async function (plain) {
   return argon2.verify(this.passwordHash, plain)
 }
-
+userSchema.methods.toSafe = function () {
+  const { _id, email, name, role, createdAt, updatedAt } = this;
+  return { id: String(_id), email, name, role, createdAt, updatedAt };
+};
 export const User = mongoose.model("User", userSchema)
