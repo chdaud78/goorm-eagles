@@ -1,0 +1,86 @@
+[
+  {
+    "name": "조준형",
+    "profile": "./users/user1.png",
+    "intro": "UI/UX에 진심인 개발자",
+    "GitHub": "https://github.com/Jojunhyeong",
+    "blog": "https://velog.io/@jojh0323/posts"
+  },
+  {
+    "name": "이민제",
+    "profile": "./users/user2.png",
+    "intro": "데이터를 움직이는 개발자",
+    "GitHub": "https://github.com/olminje",
+    "blog": "https://velog.io/@ol_minje/posts"
+  },
+  {
+    "name": "박총명",
+    "profile": "./users/user3.png",
+    "intro": "문제 해결형 프론트엔드 엔지니어",
+    "GitHub": "https://github.com/chdaud78",
+    "blog": "https://velog.io/@chdaud78/posts"
+  },
+  {
+    "name": "박나현",
+    "profile": "./users/user4.png",
+    "intro": "감각적인 인터페이스를 설계하는 디자이너형 개발자",
+    "GitHub": "https://github.com/studioOwol",
+    "blog": "https://owol-log.vercel.app/"
+  },
+  {
+    "name": "이승헌",
+    "profile": "./users/user5.png",
+    "intro": "코드로 세상을 더 편리하게",
+    "GitHub": "",
+    "blog": ""
+  },
+  {
+    "name": "백은섭",
+    "profile": "./users/user6.png",
+    "intro": "사용자 중심의 웹을 만드는 프론트엔드",
+    "GitHub": "",
+    "blog": ""
+  },
+  {
+    "name": "진현지",
+    "profile": "./users/user7.png",
+    "intro": "애니메이션과 모션에 강한 개발자",
+    "GitHub": "https://github.com/Catsmanager",
+    "blog": "https://velog.io/@catsmanager/posts"
+  },
+  {
+    "name": "최지인",
+    "profile": "./users/user8.png",
+    "intro": "데이터 시각화에 매력을 느끼는 개발자",
+    "GitHub": "",
+    "blog": ""
+  },
+  {
+    "name": "최원형",
+    "profile": "./users/user9.png",
+    "intro": "클린 코드를 지향하는 주니어 개발자",
+    "GitHub": "",
+    "blog": ""
+  },
+  {
+    "name": "홍성준",
+    "profile": "./users/user10.png",
+    "intro": "사용자의 여정을 설계하는 개발자",
+    "GitHub": "https://github.com/tjdwns1904",
+    "blog": ""
+  },
+  {
+    "name": "이신행",
+    "profile": "./users/user11.png",
+    "intro": "행복을 향해 나아가는 프론트엔드",
+    "GitHub": "https://github.com/shinhaeng1204",
+    "blog": ""
+  },
+  {
+    "name": "서민욱",
+    "profile": "./users/user12.png",
+    "intro": "알고리즘 분석에 고뇌하는 프론트 개발자",
+    "GitHub": "https://github.com/Ikmyeongs",
+    "blog": "https://velog.io/@boroson/posts"
+  }
+]
