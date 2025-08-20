@@ -19,8 +19,7 @@ router.post("/register", async (req, res) => {
     const user = new User({ email, name })
     await user.setPassword(password)
     await user.save()
-
-    return res.status(201).json({ ok: true })
+    return res.status(201).json(user.toSafe());
   } catch (e) {
     console.error(e)
     return res.status(500).json({ error: "Server error" })
@@ -49,9 +48,9 @@ router.post("/login", async (req, res) => {
       ua: req.headers["user-agent"] || "",
       ip: req.ip
     })
-
     setRefreshCookie(res, refreshToken)
-    return res.json({ token: accessToken })
+
+    return res.json({ token: accessToken,  user: user.toSafe() })
   } catch (e) {
     console.error(e)
     return res.status(500).json({ error: "Server error" })
