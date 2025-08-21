@@ -9,7 +9,7 @@ export default function RootLayout() {
   const theme = 'dark'
 
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext value={theme}>
       <Layout>
         <ErrorBoundary fallback={<p>⚠️ 오류가 발생했습니다</p>}>
           <Suspense fallback={<div className="p-6">로딩중…</div>}>
@@ -17,6 +17,6 @@ export default function RootLayout() {
           </Suspense>
         </ErrorBoundary>
       </Layout>
-    </ThemeContext.Provider>
+    </ThemeContext>
   )
 }
