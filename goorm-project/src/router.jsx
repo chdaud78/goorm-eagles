@@ -8,6 +8,8 @@ import Login from '@/routes/auth/Login'
 import Register from '@/routes/auth/Register'
 import Home from '@/routes/Home'
 import NotFound from '@/routes/NotFound'
+import Auth from '@/routes/practice/Auth'
+import Theme from '@/routes/practice/Theme'
 
 const Profile = lazy(() => import('@/routes/member/Profile'))
 
@@ -23,6 +25,8 @@ export default function AppRoutes() {
           <Route path={ROUTES.AUTH.LOGIN} element={<Login />} />
           <Route path={ROUTES.AUTH.REGISTER} element={<Register />} />
         </Route>
+        <Route path={ROUTES.PRACTICE.AUTH} element={<Auth />} />
+        <Route path={ROUTES.PRACTICE.THEME} element={<Theme />} />
         <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
       </Route>
     </Routes>

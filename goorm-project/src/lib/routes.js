@@ -8,5 +8,9 @@ export const ROUTES = {
     LOGIN: '/login',
     REGISTER: '/register',
   },
+  PRACTICE: {
+    THEME: '/theme',
+    AUTH: '/auth',
+  },
   NOT_FOUND: '*',
 }
