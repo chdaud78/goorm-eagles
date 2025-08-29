@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="goorm-server">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/goorm-server/goorm-server.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

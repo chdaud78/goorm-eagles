@@ -11,7 +11,6 @@ import { connectDB } from "./db.js";
 import authRoutes from "./routes/auth.js";
 import meRoutes from "./routes/me.js";
 import postRoutes from "./routes/posts.js";
-import quizRoutes from "./routes/quiz.js";
 
 const app = express();
 
@@ -61,7 +60,6 @@ app.use(
 app.use("/auth", authRoutes);
 app.use("/", meRoutes);
 app.use("/posts", postRoutes);
-app.use("/api", quizRoutes);
 
 /** 9) 404 핸들러 */
 app.use((req, res, next) => {

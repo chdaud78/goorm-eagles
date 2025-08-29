@@ -115,5 +115,28 @@ npm i -D nodemon
 | 개발 편의    | `nodemon` (Dev Only)       | 서버 자동 재시작 |
 
 ---
+## 테스트
+```bash
+# 헬스체크
+curl http://localhost:4000/health
+# {"ok":true}
+
+# 회원가입
+curl -X POST http://localhost:4000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"a@a.com","password":"123456","name":"Alice"}'
+
+# 로그인
+curl -i -X POST http://localhost:4000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"a@a.com","password":"123456"}'
+# 응답에 access_token 쿠키 + JSON { accessToken, user } 반환
+
+# 로그인 정보 확인
+TOKEN=<<위 로그인 응답의 accessToken>>
+curl -H "Authorization: Bearer $TOKEN" http://localhost:4000/me
+
+```
+---
 
 이 패키지들을 조합하면 **안전하고 확장 가능한 인증/회원가입 가능한 Node.js + MongoDB REST API 서버**를 빠르게 구축할 수 있습니다.

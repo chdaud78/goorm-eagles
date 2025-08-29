@@ -33,7 +33,9 @@ function ownerGuard(userId, doc) {
 // ===== Create =====
 router.post("/", requireAuth, async (req, res) => {
   const parsed = CreateSchema.safeParse(req.body)
-  if (!parsed.success) return res.status(400).json({ error: parsed.error.format() })
+  if (!parsed.success) {
+    return res.status(400).json({ error: parsed.error.format() })
+  }
 
   const post = await Post.create({
     ...parsed.data,
@@ -52,36 +54,44 @@ router.get("/:id", async (req, res) => {
 // ===== List (검색/페이지네이션) =====
 router.get("/", async (req, res) => {
   const parsed = ListQuerySchema.safeParse(req.query)
-  if (!parsed.success) return res.status(400).json({ error: parsed.error.format() })
-  const { q, tag, page, limit } = parsed.data
+  if (!parsed.success) {
+    return res.status(400).json({ error: parsed.error.format() })
+  }
 
+  const { q, tag, page, limit } = parsed.data
   const filter = { isDeleted: false }
   if (q) filter.$text = { $search: q }
   if (tag) filter.tags = tag
 
-  const [items, total] = await Promise.all([
-    Post.find(filter)
-      .sort({ createdAt: -import.meta ? 1 : 1 }) // harmless placeholder to keep sort; will be replaced below
-      .sort({ createdAt: -1 }) // 최신글 우선
-      .skip((page - 1) * limit)
-      .limit(limit)
-      .lean(),
-    Post.countDocuments(filter)
-  ])
+  try {
+    const [items, total] = await Promise.all([
+      Post.find(filter)
+        .sort({ createdAt: -1 })   // ✅ 문제 있던 부분 수정 (NaN 제거)
+        .skip((page - 1) * limit)
+        .limit(limit)
+        .lean(),
+      Post.countDocuments(filter)
+    ])
 
-  res.json({
-    items,
-    page,
-    limit,
-    total,
-    totalPages: Math.ceil(total / limit)
-  })
+    res.json({
+      items,
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit)
+    })
+  } catch (err) {
+    console.error("[GET /posts] error:", err)
+    res.status(500).json({ error: "InternalServerError" })
+  }
 })
 
 // ===== Update =====
 router.patch("/:id", requireAuth, async (req, res) => {
   const parsed = UpdateSchema.safeParse(req.body)
-  if (!parsed.success) return res.status(400).json({ error: parsed.error.format() })
+  if (!parsed.success) {
+    return res.status(400).json({ error: parsed.error.format() })
+  }
 
   const post = await Post.findById(req.params.id)
   if (!post || post.isDeleted) return res.status(404).json({ error: "NotFound" })

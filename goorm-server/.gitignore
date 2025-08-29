@@ -21,7 +21,7 @@ goorm-server/.env
 
 # IDE / Editor
 .vscode/
-.idea/
+../../goorm-eagles/.idea/
 *.swp
 *.swo
 
